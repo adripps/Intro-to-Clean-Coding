@@ -1,0 +1,112 @@
+1. Clean code is code organized in a way that makes it maintainable and easily readable. It is important to have clean code when working with others so they can easily decipher what you code is saying. It is also useful when going back over your own code since you likely won't remember every detail of your code.
+
+2. Another commonly used object that relies on code is a hot water heater. If the code was not created to an acceptable level it could result in people being badly burned by water that's scorching hot.
+
+3. This is not clean code. It is a case of self-documenting code. The code would be cleaner as follows:
+FUNCTION do(x, y)
+ IF y = "F" THEN
+ SET z to (x−32) * (5/9)
+ PRINT z
+ ELSE IF y = "C" THEN
+ SET z to x * 1.8000 + 32.00 t
+ PRINT z
+ END IF
+END FUNCTION
+
+4. The code appears clean except for in it's naming of the function calcPercent. I would change that to calculatePercent to avoid abbreviations.
+
+5. a. FUNCTION printSubTotal(subTotal, discountRate)
+        PRINT "Your total due is: " + subtotal * discountRate + (subTotal * tax)
+      END FUNCTION
+
+      FUNCTION receivePayment(subTotal, discountRate, paymentType)
+        IF paymentType = 'CASH' THEN
+          CALL getPayment RETURNING amount
+          PRINT "Change due: " + amount - printSubTotal(subTotal, discountRate)
+        ELSE IF paymentType = 'CREDIT CARD' THEN
+          CALL getPayment RETURNING amount
+          PRINT "Your credit card has been charged: " + printSubTotal(subTotal, discountRate)
+        END IF
+      END FUNCTION
+
+   b. FUNCTION checkoutBook(book, guest)
+        IF guest.accoutnActive AND NOT(guest.hasOverdueBooks) AND guest.outstandinFees = 0 THEN
+          APPEND book to guest.books
+          SET book.status to "Checked Out"
+          PRINT "Your books have been issued."
+        ELSE
+          PRINT "Unable to checkout book."
+        END IF
+      END FUNCTION
+   c. CLASS BankAccount
+
+        FUNCTION displayBalance
+          PRINT balance
+        END FUNCTION
+
+        FUNCTION deposit(amount)
+          SET balance to balance + amount
+        END FUNCTION
+
+        FUNCTION withdraw(amount)
+          IF balance > amount THEN
+            SET balance to balance - amount
+          END
+        END FUNCTION
+
+        FUNCTION checkForCreditCard
+          IF NOT(customer.hasCreditCard) THEN
+            CALL offerCreditCard
+          END
+        END FUNCTION
+
+      FUNCTION checkForCheckingAccout
+        IF NOT(customer.hasCheckingAccount) THEN
+         CALL offerCheckingAccount
+        END
+      END FUNCTION
+
+    END
+
+6.
+function findSum (integers) {
+  var sum = 0;
+  for (var i = 0; i < integers.length; i++){
+    sum = sum + integers[i]
+  }
+  return sum;
+ }
+
+ function isPerfectSquare(integers) {
+  if (findSum(integers) % Math.sqrt(findSum(integers)) === 0 ){
+    return Math.sqrt(findSum(integers))
+  }
+  else {
+    return findSum(integers)
+  }
+}
+
+7.
+function findDuplicates(integers){
+  for (var i = 0; i < integers.length; i++){
+    for (var j = i + 1; j < integers.length; j++){
+      if(integers[i] === integers[j]){
+          return true;
+      }
+    }
+  }
+  return false;
+}
+
+Extra Credit:
+var stringOneArray = stringOne.split('').sort();
+var stringTwoArray = stringTwo.split('').sort();
+
+function isAnagram(stringOneArray, stringTwoArray){
+  for (var i = 0; stringOneArray.length; i++){
+    if (stringOneArray[i] == stringTwoArray[i] && stringOneArray.length === stringTwoArray.length){
+      return true;
+    }
+  }
+  return false;
+}
